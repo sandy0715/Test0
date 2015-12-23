@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sandy.test0" >
-
+    <!-- Applicationに対する設定を記述 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <!-- Applicationを構成する各Activityに対する設定を記述 -->
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
+                <!-- action.MAIN, category.LAUNCHER と指定されたActivityが最初に呼び出される-->
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
