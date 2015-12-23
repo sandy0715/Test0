@@ -4,11 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {  //アクティビティが起動した時に呼ばれる
+    protected void onCreate(Bundle savedInstanceState) {  //onCreate: アクティビティが起動した時に呼ばれる
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //LayoutのActivityMainを上位のViewに表示
     }
@@ -18,6 +20,46 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    // burstUnko buttonのonClickメソッド
+    public void burstUnko(View view) {
+        // findView~ でViewから部品のIDを検索してくれる。IDはR.id.xxxで指定。findViewの戻り値はViewなのでキャストする。
+        TextView tv = (TextView)findViewById(R.id.textTitle);
+
+        // 現在時刻の取得：System.currentTimeMillis()
+        long currentTime = System.currentTimeMillis();
+        System.out.println(currentTime);    // log:時刻出力
+        int conditionSeed = (int)(currentTime%(long)4); // seed生成
+        System.out.println(conditionSeed);    // log:seedの確認
+        String text;    //表示テキストの宣言
+
+        // 現在時刻から4種類のテキストをボタン押下時のタイミングで生成
+        switch(conditionSeed) {
+            case 0:
+                text = "Banana unko";
+                System.out.println("[Case 0]");    // log:
+                break;
+            case 1:
+                text = "Geri";
+                System.out.println("[Case 1]");    // log:
+                break;
+            case 2:
+                text = "Ball unko";
+                System.out.println("[Case 2]");    // log:
+                break;
+            case 3:
+                text = "Cool MAKI-GUSO!!";
+                System.out.println("[Case 3]");    // log:
+                break;
+            default:
+                text = "";
+                System.out.println("[Default]");    // log:
+                break;
+        }
+        System.out.println("TEXT: " + text);    // log:textの確認
+        // textの出力
+        tv.setText(text);
     }
 
     @Override
